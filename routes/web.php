@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CreditController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layout');
 });
+
+Route::get('/', [CreditController::class, 'index'])->name('credits.index');
+Route::get('/credits/create', [CreditController::class, 'create'])->name('credits.create');
+Route::post('/credits', [CreditController::class, 'store'])->name('credits.store');
+Route::get('/payments/create', [PaymentController::class, 'create'])->name('payments.create');
+Route::post('/payments', [PaymentController::class, 'store'])->name('payments.store');
