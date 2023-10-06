@@ -29,7 +29,6 @@ class CreditController extends Controller
     {
         $recipient = Recipient::firstOrCreate(['name' => $request->recipient_name]);
 
-        //$totalCreditsAmount = $recipient->credits->sum('amount');
         if ($recipient->credits->sum('amount') + $request->amount > 80000) {
             return back()->with('error', 'Кредитополучателят има общо кредити на стойност над 80 000 лв.');
         }
