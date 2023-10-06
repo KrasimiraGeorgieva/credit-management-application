@@ -19,6 +19,7 @@ class CreditTest extends TestCase
 
         $response->assertStatus(200);
     }
+
     use RefreshDatabase;
 
     /** @test */

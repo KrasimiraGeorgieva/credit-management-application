@@ -11,7 +11,7 @@ class StoreCreditRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class StoreCreditRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'recipient_name' => 'required|string|max:255',
+            'amount' => 'required|numeric|min:1|max:80000',
+            'term_months' => 'required|numeric|min:3|max:120',
         ];
     }
 }
